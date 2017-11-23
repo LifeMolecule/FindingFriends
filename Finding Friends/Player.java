@@ -9,9 +9,12 @@
  import java.util.ArrayList;
 public class Player
 {
-    private Hand onehand;
-    private Hand twohand;
-    private Hand threehand;
-    private Hand fourhand;
+    private Hand hand;
+    private String type;
     private Scanner scan=new Scanner(System.in);
+    public Player(String t)
+    {
+     type=t;   
+     Hand hand= new Hand();
+    }
 }
