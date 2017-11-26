@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.params=s\ v\ r
+comment0.target=Card(java.lang.String,\ int,\ java.lang.String)
+comment0.text=\r\n\ Constructor\ for\ Card\ class\ which\ instantiates\ a\ card.\ The\ card\ always\ starts\ face\ up.\r\n\ @param\ A\ string\ for\ suit,\ string\ for\ rank\r\n\ \r\n
+comment1.params=
+comment1.target=java.lang.String\ getRank()
+comment1.text=\r\n\ A\ getter\ for\ the\ Rank\r\n\ @return\ rank\r\n
+comment2.params=
+comment2.target=int\ getValue()
+comment3.params=v
+comment3.target=void\ setValue(int)
+comment4.params=
+comment4.target=java.lang.String\ getSuit()
+comment4.text=\r\n\ @return\ the\ suit\ of\ the\ card\r\n
+numComments=5

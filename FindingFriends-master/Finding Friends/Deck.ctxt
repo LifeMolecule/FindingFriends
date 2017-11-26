@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Deck()
+comment0.text=\r\n\ Constructor\ for\ a\ deck\ which\ makes\ a\ standard\ 52\ card\ deck\r\n
+comment1.params=
+comment1.target=java.util.ArrayList\ getDeck()
+comment1.text=\r\n\ Deck\ getter\r\n\ @return\ the\ Arraylist\ of\ cards\r\n
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment2.text=\ \r\n\ To\ string\ method\ which\ returns\ out\ all\ the\ ranks\ in\ the\ deck\r\n\ @return\ all\ the\ ranks\ in\ the\ deck\r\n
+numComments=3
