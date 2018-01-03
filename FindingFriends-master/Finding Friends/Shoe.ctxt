@@ -1,15 +1,14 @@
 #BlueJ class context
-comment0.target=Shoe
-comment1.params=a
-comment1.target=Shoe(int)
-comment1.text=\n\ Constructor\ for\ a\ Shoe\n\ @param\ Amounts\ of\ Decks\ in\ the\ shoe\n
+comment0.params=a
+comment0.target=Shoe(int)
+comment0.text=\r\n\ Constructor\ for\ a\ Shoe\r\n\ @param\ Amounts\ of\ Decks\ in\ the\ shoe\r\n
+comment1.params=
+comment1.target=java.lang.String\ toString()
+comment1.text=\r\n\ Prints\ out\ all\ ranks\ of\ all\ cards\ in\ the\ Shoe\ with\ a\ new\ line\ starting\ every\ 50\ cards\r\n\ @return\ the\ ranks\ of\ every\ card\ in\ the\ Shoe\r\n
 comment2.params=
-comment2.target=java.lang.String\ toString()
-comment2.text=\n\ Prints\ out\ all\ ranks\ of\ all\ cards\ in\ the\ Shoe\ with\ a\ new\ line\ starting\ every\ 50\ cards\n\ @return\ the\ ranks\ of\ every\ card\ in\ the\ Shoe\n
+comment2.target=void\ shuffle()
+comment2.text=\r\n\ Randomizes\ the\ order\ the\ cards\ are\ in\ in\ the\ Shoe\ arraylist\r\n
 comment3.params=
-comment3.target=void\ shuffle()
-comment3.text=\n\ Randomizes\ the\ order\ the\ cards\ are\ in\ in\ the\ Shoe\ arraylist\n
-comment4.params=
-comment4.target=Card\ nextCard()
-comment4.text=\n\ Gets\ the\ next\ Card\ in\ the\ Shoe\ and\ moves\ the\ counter\ onto\ the\ next\ Card\ and\ removes\ the\ card\ from\ the\ shoe\n\ @return\ the\ next\ card\n
-numComments=5
+comment3.target=Card\ nextCard()
+comment3.text=\r\n\ Gets\ the\ next\ Card\ in\ the\ Shoe\ and\ moves\ the\ counter\ onto\ the\ next\ Card\ and\ removes\ the\ card\ from\ the\ shoe\r\n\ @return\ the\ next\ card\r\n
+numComments=4

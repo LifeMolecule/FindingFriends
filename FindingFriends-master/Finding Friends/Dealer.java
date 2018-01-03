@@ -14,6 +14,9 @@ public class Dealer
     private Player two;
     private Player three;
     private Player four;
+    private ArrayList<Card> dump=new ArrayList<Card>();
+    private String trumpsuit;
+    private int trump;
     //maybe instantiate 4 players and 4 hands here as well
     public Dealer()
     {
@@ -56,6 +59,29 @@ public class Dealer
             counter=1;
         }
         return x;
+    }
+    
+    //tells dealer what the trump suit and number are
+    //deals bottom 8 and has cpu automatically choose the lowest cards that arnt doubles and dumps,
+    //otherwise lets player choose 8 cards to dump
+    public void setUp(String ts, int t)
+    {
+        trumpsuit=ts;
+        trump=t;
+    }
+    
+    //sorts and sets hands, last line will be removed and changed to voide later(WIP) 
+    public String getAllhands()
+    {
+        one.handSort();
+        one.set(trumpsuit,trump);
+        two.handSort();
+        two.set(trumpsuit,trump);
+        three.handSort();
+        three.set(trumpsuit,trump);
+        four.handSort();
+        four.set(trumpsuit,trump);
+        return "1: " + one.getHandvalues() + "\n \n 2: " + two.getHandvalues() + "\n \n 3: " + three.getHandvalues() + "\n \n 4: " + four.getHandvalues();
     }
     //determines who is in control
     public String control()

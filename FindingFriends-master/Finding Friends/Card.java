@@ -45,5 +45,4 @@ public void setValue(int v){
 public String getSuit() {
     return suit;
 }
-
 }

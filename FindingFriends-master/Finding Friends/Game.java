@@ -11,6 +11,7 @@ public class Game
         //for loop that deals each round and prompts the player if he wants to declare if no cpu has declared yet
         //instantiates a dealer and a variable stating that nothing has been declared yet
         String trump="Two";
+        int trumpnum=2;
         String trumpsuit="false";
         int counter=0;
         Dealer d=new Dealer();
@@ -23,6 +24,8 @@ public class Game
         }
         System.out.println(trumpsuit);
         System.out.println(d.control());
+        d.setUp(trumpsuit, trumpnum);
+        System.out.println(d.getAllhands());
         //for loop that runs the game by calling something else?
     }
 }

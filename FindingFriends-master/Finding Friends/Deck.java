@@ -81,8 +81,8 @@ public class Deck
             }
          
         }
-           nDeck.add(new Card("Trump",27,"RJoker"));
-            nDeck.add(new Card("Trump",28,"BJoker"));
+           nDeck.add(new Card("Trump",28,"RJoker"));
+            nDeck.add(new Card("Trump",27,"BJoker"));
     }
     /**
      * Deck getter
