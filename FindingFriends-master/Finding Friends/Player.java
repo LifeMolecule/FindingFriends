@@ -15,7 +15,10 @@ public class Player
     private ArrayList<Card> diamonds=new ArrayList<Card>();
     private ArrayList<Card> clubs=new ArrayList<Card>();
     private ArrayList<Card> trumps=new ArrayList<Card>();
-
+    
+    private int bottompilepoints=0;
+    private String trumpsuit;
+    private int trumpvalue;
     private String type;
     private Scanner scan=new Scanner(System.in);
     private boolean incontrol=false;
@@ -24,103 +27,42 @@ public class Player
         type=t;   
     }
 
-     //class which makes all the trumps increase in value and changes the trump card to the "trump suit"
+    //class which makes all the trumps increase in value and changes the trump card to the "trump suit"
     public void set(String suit, int value)
     {
-        for(Card c: spades)
+        for(int i=h.size()-1;i>0;i--)
         {
-            if(c.getSuit().equals(suit) && c.getValue()==value)
+            if(h.get(i-1).getSuit().equals(suit) && h.get(i-1).getValue()==value)
             {
-                c.setValue(26);
+                h.get(i-1).setValue(26);
+                trumps.add(h.remove(i-1));
             }
-            else if(c.getValue()==value)
+            else if(h.get(i-1).getValue()==value)
             {
-                c.setValue(25);
+                h.get(i-1).setValue(25);
+                trumps.add(h.remove(i-1));
             }
-            else if(c.getSuit().equals(suit) && c.getValue()>value)
+            else if(h.get(i-1).getSuit().equals(suit) && h.get(i-1).getValue()>value)
             {
-                c.setValue(c.getValue()+11);
+                h.get(i-1).setValue(h.get(i-1).getValue()+11);
             }
-             else if(c.getSuit().equals(suit))
+            else if(h.get(i-1).getSuit().equals(suit))
             {
-                c.setValue(c.getValue()+12);
+                h.get(i-1).setValue(h.get(i-1).getValue()+12);
             }
-             else if(c.getValue()>value)
+            else if(h.get(i-1).getValue()>value && !(h.get(i-1).getValue()>26))
             {
-                c.setValue(c.getValue()-1);
-            }
-        }
-         for(Card c: clubs)
-        {
-            if(c.getSuit().equals(suit) && c.getValue()==value)
-            {
-                c.setValue(26);
-            }
-            else if(c.getValue()==value)
-            {
-                c.setValue(25);
-            }
-            else if(c.getSuit().equals(suit) && c.getValue()>value)
-            {
-                c.setValue(c.getValue()+11);
-            }
-             else if(c.getSuit().equals(suit))
-            {
-                c.setValue(c.getValue()+12);
-            }
-             else if(c.getValue()>value)
-            {
-                c.setValue(c.getValue()-1);
-            }
-        }
-         for(Card c: diamonds)
-        {
-            if(c.getSuit().equals(suit) && c.getValue()==value)
-            {
-                c.setValue(26);
-            }
-            else if(c.getValue()==value)
-            {
-                c.setValue(25);
-            }
-            else if(c.getSuit().equals(suit) && c.getValue()>value)
-            {
-                c.setValue(c.getValue()+11);
-            }
-             else if(c.getSuit().equals(suit))
-            {
-                c.setValue(c.getValue()+12);
-            }
-             else if(c.getValue()>value)
-            {
-                c.setValue(c.getValue()-1);
-            }
-        }
-         for(Card c: hearts)
-        {
-            if(c.getSuit().equals(suit) && c.getValue()==value)
-            {
-                c.setValue(26);
-            }
-            else if(c.getValue()==value)
-            {
-                c.setValue(25);
-            }
-            else if(c.getSuit().equals(suit) && c.getValue()>value)
-            {
-                c.setValue(c.getValue()+11);
-            }
-             else if(c.getSuit().equals(suit))
-            {
-                c.setValue(c.getValue()+12);
-            }
-             else if(c.getValue()>value)
-            {
-                c.setValue(c.getValue()-1);
+                h.get(i-1).setValue(h.get(i-1).getValue()-1);
             }
         }
     }
-    
+
+    public void setTrumpStuff(String suit, int value)
+    {
+        trumpsuit=suit;
+        trumpvalue=value;
+    }
+
     //used to see the hand
     public String getHand()
     {
@@ -157,7 +99,7 @@ public class Player
         return a;
     }
     //used to debug program and make sure values work, never actually called in program
-        public String getHandvalues()
+    public String getHandvalues()
     {
         String a="Spades: ";
         for(Card c:spades)
@@ -191,6 +133,7 @@ public class Player
 
         return a;
     }
+    //sorts hands by suit and in order of increasing value after using the "set" command
     public void handSort()
     {
         ArrayList<Card> holder=new ArrayList<Card>();
@@ -288,6 +231,54 @@ public class Player
             }
         }
         return x;
+    }
+
+    public void bottomCards(ArrayList<Card> eight)
+    {
+        if(incontrol)
+        {
+            for(int i=0;i<8;i++)
+            {
+                h.add(eight.remove(0));
+            }
+
+            if(type.equals("Human"))
+            {
+                set(trumpsuit,trumpvalue);
+                handSort();
+                System.out.println("----------------------------\nHere are all your cards:\n" + getHand());
+                
+                
+                //while loop to throw away cards by cycling through the suits
+                String a="";
+                int counter=8;
+                while(counter>0)
+                {
+                    
+                    
+                    bottompilepoints=bottompilepoints;  //+ 2*point value of card
+                    a=a; //+ card rank + " ";
+                }
+                System.out.println("You threw away: " + a);
+                
+            }
+
+            //insert cpu logic here that determines which cards to throw away
+            else
+            {
+                set(trumpsuit,trumpvalue);
+                // throw away cards to bottom pile here
+                
+                
+                
+                handSort();
+            }
+        }
+        else
+        {
+            set(trumpsuit,trumpvalue);
+            handSort();
+        }
     }
 
 }

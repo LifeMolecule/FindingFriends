@@ -68,19 +68,25 @@ public class Dealer
     {
         trumpsuit=ts;
         trump=t;
+        ArrayList<Card> holder=new ArrayList<Card>();
+        for(int i=0;i<8;i++)
+        {
+            holder.add(shoe.nextCard());
+        }
+        one.setTrumpStuff(ts,t);
+        two.setTrumpStuff(ts,t);
+        three.setTrumpStuff(ts,t);
+        four.setTrumpStuff(ts,t);
+        one.bottomCards(holder);
+        two.bottomCards(holder);
+        three.bottomCards(holder);
+        four.bottomCards(holder);
+        
     }
     
-    //sorts and sets hands, last line will be removed and changed to voide later(WIP) 
+    //Entire method will probably be deleted later, used for testing (NOT IMPORTANT) 
     public String getAllhands()
     {
-        one.handSort();
-        one.set(trumpsuit,trump);
-        two.handSort();
-        two.set(trumpsuit,trump);
-        three.handSort();
-        three.set(trumpsuit,trump);
-        four.handSort();
-        four.set(trumpsuit,trump);
         return "1: " + one.getHandvalues() + "\n \n 2: " + two.getHandvalues() + "\n \n 3: " + three.getHandvalues() + "\n \n 4: " + four.getHandvalues();
     }
     //determines who is in control
