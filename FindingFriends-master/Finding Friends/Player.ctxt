@@ -16,5 +16,5 @@ comment6.target=boolean\ getIncontrol()
 comment7.params=c\ x\ trump
 comment7.target=java.lang.String\ drawCard(Card,\ java.lang.String,\ java.lang.String)
 comment8.params=eight
-comment8.target=void\ bottomCards(java.util.ArrayList)
+comment8.target=int\ bottomCards(java.util.ArrayList)
 numComments=9

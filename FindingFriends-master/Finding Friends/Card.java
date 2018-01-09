@@ -51,7 +51,10 @@ public int getValue(){
 public void setValue(int v){
     value=v;
 }
-
+public int getPointValue()
+{
+    return pointValue;
+}
 /**
  * @return the suit of the card
  */

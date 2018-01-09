@@ -15,8 +15,7 @@ public class Player
     private ArrayList<Card> diamonds=new ArrayList<Card>();
     private ArrayList<Card> clubs=new ArrayList<Card>();
     private ArrayList<Card> trumps=new ArrayList<Card>();
-    
-    private int bottompilepoints=0;
+
     private String trumpsuit;
     private int trumpvalue;
     private String type;
@@ -30,7 +29,7 @@ public class Player
     //class which makes all the trumps increase in value and changes the trump card to the "trump suit"
     public void set(String suit, int value)
     {
-        for(int i=h.size()-1;i>0;i--)
+        for(int i=h.size();i>0;i--)
         {
             if(h.get(i-1).getSuit().equals(suit) && h.get(i-1).getValue()==value)
             {
@@ -233,34 +232,130 @@ public class Player
         return x;
     }
 
-    public void bottomCards(ArrayList<Card> eight)
+    public int bottomCards(ArrayList<Card> eight)
     {
         if(incontrol)
         {
             for(int i=0;i<8;i++)
             {
+                //remove line below when done
+                System.out.println(eight.get(0).getRank());
                 h.add(eight.remove(0));
+                
             }
 
             if(type.equals("Human"))
             {
                 set(trumpsuit,trumpvalue);
                 handSort();
-                System.out.println("----------------------------\nHere are all your cards:\n" + getHand());
-                
-                
+                System.out.println("----------------------------\n You need to put 8 cards back into the bottom pile, Here are all your cards:\n" + getHandvalues());
+
                 //while loop to throw away cards by cycling through the suits
+                int bottompilepoints=0;
                 String a="";
+                int suit=0;
                 int counter=8;
+                Card hold;
+
                 while(counter>0)
-                {
-                    
-                    
-                    bottompilepoints=bottompilepoints;  //+ 2*point value of card
-                    a=a; //+ card rank + " ";
+                {   int j=0;
+                    if(suit==0)
+                    {
+                        System.out.println("----------------------------");
+                        System.out.println("Here are the spades, what would you like to do?\n1:remove from spades  2: next suit");
+                        for(Card c:spades)
+                        {   
+                            System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
+                            j+=1;
+                        }
+                        int num=scan.nextInt();
+                        if(num==1)
+                        {
+                            System.out.println("Input the number of a card you would like to remove\n");
+                            hold=spades.remove(scan.nextInt());
+                            counter-=1;
+                            a=a + hold.getRank() + " ";
+                            bottompilepoints=bottompilepoints + 2*hold.getPointValue();
+                        }
+                        else
+                        {
+                            suit=(suit+1) % 4;
+                        }
+                    }
+                    else if(suit==1)
+                    {
+                        System.out.println("----------------------------");
+                        System.out.println("Here are the clubs, what would you like to do?\n1:remove from clubs  2: next suit\n");
+                        for(Card c:clubs)
+                        {   
+                            System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
+                            j+=1;
+                        }
+                        int num=scan.nextInt();
+                        if(num==1)
+                        {
+                            System.out.println("Input the number of a card you would like to remove\n");
+                            hold=clubs.remove(scan.nextInt());
+                            counter-=1;
+                            a=a + hold.getRank() + " ";
+                            bottompilepoints=bottompilepoints + 2*hold.getPointValue();
+                        }
+                        else
+                        {
+                            suit=(suit+1) % 4;
+                        }
+                    }
+                    else if(suit==2)
+                    {
+                        System.out.println("----------------------------");
+                        System.out.println("Here are the diamonds, what would you like to do?\n1:remove from diamonds  2: next suit\n");
+                        for(Card c:diamonds)
+                        {
+                            System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
+                            j+=1;
+                        }
+                        int num=scan.nextInt();
+                        if(num==1)
+                        {
+                            System.out.println("Input the number of a card you would like to remove\n");
+                            hold=diamonds.remove(scan.nextInt());
+                            counter-=1;
+                            a=a + hold.getRank() + " ";
+                            bottompilepoints=bottompilepoints + 2*hold.getPointValue();
+                        }
+                        else
+                        {
+                            suit=(suit+1) % 4;
+                        }
+                    }
+                    else if(suit==3)
+                    {
+                        System.out.println("----------------------------");
+                        System.out.println("Here are the hearts, what would you like to do?\n1:remove from hearts  2: next suit\n");
+                        for(Card c:hearts)
+                        {  
+                            System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
+                            j+=1;
+                        }
+                        int num=scan.nextInt();
+                        if(num==1)
+                        {
+                            System.out.println("Input the number of a card you would like to remove\n");
+                            hold=hearts.remove(scan.nextInt());
+                            counter-=1;
+                            a=a + hold.getRank() + " ";
+                            bottompilepoints=bottompilepoints + 2*hold.getPointValue();
+                        }
+                        else
+                        {
+                            suit=(suit+1) % 4;
+                        }
+                    }
                 }
                 System.out.println("You threw away: " + a);
-                
+                //get ride of the line below later cuz its just for checking
+                System.out.println(bottompilepoints);
+                return bottompilepoints;
             }
 
             //insert cpu logic here that determines which cards to throw away
@@ -268,17 +363,23 @@ public class Player
             {
                 set(trumpsuit,trumpvalue);
                 // throw away cards to bottom pile here
-                
-                
-                
+
                 handSort();
+                //get rid of line below later
+                System.out.println(getHandvalues());
+                //change this to actually return bottom pile values if this is a cpu
+                return 0;
             }
         }
         else
         {
             set(trumpsuit,trumpvalue);
             handSort();
+            //get rid of line below later
+            System.out.println(getHandvalues());
+            return 0;
         }
+
     }
 
 }
