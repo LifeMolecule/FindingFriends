@@ -31,33 +31,37 @@ public class Dealer
     public String dealRound(String x,String trump,int counter) { 
         //determines if a trump has been declared yet
         String o=one.drawCard(shoe.nextCard(),x,trump);
-        String t=two.drawCard(shoe.nextCard(),x,trump);
-        String th=three.drawCard(shoe.nextCard(),x,trump);
-        String f=four.drawCard(shoe.nextCard(),x,trump);
-        if(!o.equals("false") && counter==0)
+           if(!o.equals("false") && counter==0)
         {
             x=o;
             System.out.println("Player one declared a "+ o + " " + trump);
             counter=1;
         }
+        String t=two.drawCard(shoe.nextCard(),x,trump);
         if(!t.equals("false") && counter==0)
         {
             x=t;
             System.out.println("Player two declared a "+ t + " " + trump);
             counter=1;
         }
-        if(!th.equals("false") && counter==0)
+        String th=three.drawCard(shoe.nextCard(),x,trump);
+          if(!th.equals("false") && counter==0)
         {
             x=th;
             System.out.println("Player three declared a "+ th + " " + trump);
             counter=1;
         }
-        if(!f.equals("false") && counter==0)
+        String f=four.drawCard(shoe.nextCard(),x,trump);
+         if(!f.equals("false") && counter==0)
         {
             x=f;
             System.out.println("Player four declared a "+ f + " " + trump);
             counter=1;
         }
+     
+        
+      
+       
         return x;
     }
     

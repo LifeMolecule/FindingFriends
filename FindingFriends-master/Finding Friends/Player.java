@@ -238,11 +238,10 @@ public class Player
         {
             for(int i=0;i<8;i++)
             {
-                //remove line below when done
-                System.out.println(eight.get(0).getRank());
                 h.add(eight.remove(0));
                 
             }
+         
 
             if(type.equals("Human"))
             {
@@ -365,8 +364,6 @@ public class Player
                 // throw away cards to bottom pile here
 
                 handSort();
-                //get rid of line below later
-                System.out.println(getHandvalues());
                 //change this to actually return bottom pile values if this is a cpu
                 return 0;
             }
@@ -375,8 +372,6 @@ public class Player
         {
             set(trumpsuit,trumpvalue);
             handSort();
-            //get rid of line below later
-            System.out.println(getHandvalues());
             return 0;
         }
 
