@@ -16,6 +16,8 @@ public class Dealer
     private Player four;
     private ArrayList<Card> dump=new ArrayList<Card>();
     private String trumpsuit;
+    private ArrayList<Player> capture=new ArrayList<Player>();
+    private ArrayList<Player> killing=new ArrayList<Player>();
     private int trump;
     //maybe instantiate 4 players and 4 hands here as well
     public Dealer()
@@ -113,14 +115,67 @@ public class Dealer
             return "four";
         }
     }
-    
-    
-    //looks at the 4 arraylists and compares them to the lead to see who is the highest/who wins the points
-    public String turnCalculator(ArrayList<Card> p1,ArrayList<Card> p2, ArrayList<Card> p3, ArrayList<Card> p4,int lead)
-    {
-        return "WIP";
-    }
-    
     //Creates a class that determines teams using logic
-    
+    public void teamSet()
+    {
+        if(control().equals("one"))
+        {
+            killing.add(one);
+            killing.add(three);
+            capture.add(two);
+            capture.add(four);
+        }
+        else if (control().equals("two"))
+        {
+            killing.add(two);
+            killing.add(four);
+            capture.add(three);
+            capture.add(one);
+        }
+         else if (control().equals("three"))
+        {
+            killing.add(three);
+            killing.add(one);
+            capture.add(four);
+            capture.add(two);
+        }
+         else if (control().equals("four"))
+        {
+            killing.add(four);
+            killing.add(two);
+            capture.add(one);
+            capture.add(three);
+        }
+        
+        
+    }
+    //main class of the game rpf stands for redefined player number
+    public int gameRound(int rpf)
+    {
+        int bottom=0;
+        int newrpf=0;
+        if(rpf==0)
+        {
+            //order should be capture 0 killing 1 capture 1 killing 0
+        }
+        else if (rpf==1)
+        {
+            //order should be capture 1 killing 0 capture 0 killing 1 
+        }
+        else if (rpf==2)
+        {
+            killing.get(0); //.getCard Need to write the get card class first order should be killing 0 capture 0 
+            // killing 1 capture 1
+        }
+        else if (rpf==3)
+        {
+            //order should be killing 1 capture 1 killing 0 capture 0
+        }
+        
+        
+        
+        bottom=bottom+newrpf*1000;
+        return bottom;
+    }
+   
 }

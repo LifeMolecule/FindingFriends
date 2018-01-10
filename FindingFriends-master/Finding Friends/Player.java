@@ -16,6 +16,7 @@ public class Player
     private ArrayList<Card> clubs=new ArrayList<Card>();
     private ArrayList<Card> trumps=new ArrayList<Card>();
 
+    private String canDeclare="false";
     private String trumpsuit;
     private int trumpvalue;
     private String type;
@@ -184,16 +185,15 @@ public class Player
     public String drawCard(Card c,String x,String trump)
     {
         //instantiates z which tells if player has a declarable card or not
-        String z="false";
         h.add(new Card(c.getSuit(),c.getValue(),c.getRank()));
         if(type.equals("Human"))
         {
-            if(z.equals("false") && c.getRank().equals(trump))
+            if(canDeclare.equals("false") && c.getRank().equals(trump))
             {
-                z="true";
+                canDeclare="true";
             }
 
-            if(x.equals("false") && z.equals("true"))
+            if(x.equals("false") && canDeclare.equals("true"))
             {    System.out.println("Would you like to declare");
                 System.out.println("Options: 1).Yes, 2).No ");
                 // Scanner statement here that does stuff
@@ -232,6 +232,8 @@ public class Player
         return x;
     }
 
+    
+    //sets the bottom cards for the player
     public int bottomCards(ArrayList<Card> eight)
     {
         if(incontrol)
@@ -239,22 +241,21 @@ public class Player
             for(int i=0;i<8;i++)
             {
                 h.add(eight.remove(0));
-                
-            }
-         
 
+            }
+            int bottompilepoints=0;
+            Card hold;
             if(type.equals("Human"))
             {
                 set(trumpsuit,trumpvalue);
                 handSort();
-                System.out.println("----------------------------\n You need to put 8 cards back into the bottom pile, Here are all your cards:\n" + getHandvalues());
+                System.out.println("----------------------------\n You need to put 8 cards back into the bottom pile, Here are all your cards:\n" + getHand());
 
                 //while loop to throw away cards by cycling through the suits
-                int bottompilepoints=0;
+
                 String a="";
                 int suit=0;
                 int counter=8;
-                Card hold;
 
                 while(counter>0)
                 {   int j=0;
@@ -357,15 +358,38 @@ public class Player
                 return bottompilepoints;
             }
 
-            //insert cpu logic here that determines which cards to throw away
+            //make the cpu logic here smarter to not throw away pairs or points sometime later
             else
             {
                 set(trumpsuit,trumpvalue);
                 // throw away cards to bottom pile here
+                ArrayList<Card> holder=new ArrayList<Card>();
+                holder.add(h.get(h.size()-1));
+                for(int i=h.size()-1;i>0;i--)
+                {
+                    Card d=(h.remove(i-1));
+                    int counter=0;
+                    for(int j=0;j<holder.size();j++)
+                    {
+                        if(holder.get(j).getValue()<d.getValue())
+                        {
+                            counter++;
+                        }
+                    }
+                    holder.add(counter,d);
+                }
+                h=holder;
+ 
+                for(int i=8;i>0;i--)
+                {
+                    hold=h.remove(i-1);
+                    bottompilepoints=hold.getPointValue()*2+bottompilepoints;
+                }
 
                 handSort();
-                //change this to actually return bottom pile values if this is a cpu
-                return 0;
+                //get ride of the line below later cuz its just for checking
+                System.out.println(bottompilepoints);
+                return bottompilepoints;
             }
         }
         else

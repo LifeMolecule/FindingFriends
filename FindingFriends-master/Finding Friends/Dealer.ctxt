@@ -1,15 +1,16 @@
 #BlueJ class context
-comment0.target=Dealer
-comment1.params=
-comment1.target=Dealer()
-comment2.params=x\ trump\ counter
-comment2.target=java.lang.String\ dealRound(java.lang.String,\ java.lang.String,\ int)
-comment3.params=ts\ t
-comment3.target=void\ setUp(java.lang.String,\ int)
+comment0.params=
+comment0.target=Dealer()
+comment1.params=x\ trump\ counter
+comment1.target=java.lang.String\ dealRound(java.lang.String,\ java.lang.String,\ int)
+comment2.params=ts\ t
+comment2.target=void\ setUp(java.lang.String,\ int)
+comment3.params=
+comment3.target=java.lang.String\ getAllhands()
 comment4.params=
-comment4.target=java.lang.String\ getAllhands()
+comment4.target=java.lang.String\ control()
 comment5.params=
-comment5.target=java.lang.String\ control()
-comment6.params=p1\ p2\ p3\ p4\ lead
-comment6.target=java.lang.String\ turnCalculator(java.util.ArrayList,\ java.util.ArrayList,\ java.util.ArrayList,\ java.util.ArrayList,\ int)
+comment5.target=void\ teamSet()
+comment6.params=rpf
+comment6.target=int\ gameRound(int)
 numComments=7

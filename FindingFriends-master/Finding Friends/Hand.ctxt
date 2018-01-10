@@ -1,9 +1,8 @@
 #BlueJ class context
-comment0.target=Hand
-comment1.params=
-comment1.target=java.util.ArrayList\ getHand()
-comment2.params=c
-comment2.target=void\ addCard(Card)
-comment3.params=trump
-comment3.target=boolean\ hasTrump(java.lang.String)
-numComments=4
+comment0.params=
+comment0.target=java.util.ArrayList\ getHand()
+comment1.params=c
+comment1.target=void\ addCard(Card)
+comment2.params=trump
+comment2.target=boolean\ hasTrump(java.lang.String)
+numComments=3
