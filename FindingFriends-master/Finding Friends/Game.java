@@ -1,4 +1,3 @@
-
 /**
  * Write a description of class Game here.
  * 
@@ -41,26 +40,38 @@ public class Game
         
         
         //for loop that runs the game
+        int rpf=2;
         int output=0;
         for(int i=0;i<25;i++)
         {
             //method that takes in Last rounds winner; produces an amount of points and a new winner in the format 10##. If first digit is two or three
             //then the killing team wins, otherwise the capturing team wins
-            output=0; //insert the method here
+            output=d.gameRound(rpf);
             
             if(output>1999)
             {
                 if(output>2999)
                 {
+                    rpf=3;
                 }
                 else
                 {
+                    rpf=2;
                 }
             }
             else
             {
                 //statement that tells who the winner is.
+                if(output>999)
+                {
+                    rpf=1;
+                }
+                else
+                {
+                    rpf=0;
+                }
                 capturedPoints=capturedPoints+(output%1000);
+                
             }
             
             

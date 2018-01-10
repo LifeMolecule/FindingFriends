@@ -231,8 +231,64 @@ public class Player
         }
         return x;
     }
+    //overloaded method for the first card played to set the type and stuff
+    public ArrayList<Card> getCard()
+    {
+        ArrayList <Card> hold = new ArrayList<Card>();
+        
+        
+        
+        
+        
+        return hold;
+        
+    }
+    //gets cards to play based on the parameters of the first type played and the 
+    public ArrayList<Card> getCard(int type,String suit)
+    {
+        ArrayList <Card> hold = new ArrayList<Card>();
+        
+        
+        if(suit.equals("Spades"))
+        {
+            
+        }
+        else if(suit.equals("Diamonds"))
+        {
+            
+        }
+        else if(suit.equals("Hearts"))
+        {
+            
+        }
+        else if(suit.equals("Clubs"))
+        {
+            
+        }
+        else if(suit.equals("Trumps"))
+        {
+            
+        }
+        //singles
+        if(type==1)
+        {
 
-    
+        }
+
+        //doubles
+        else if(type==2)
+        {
+        }
+
+        //taking the trash
+        else if(type==3)
+        {
+        }
+
+        //change statement to someting meaningful later
+        return hold;
+    }
+
     //sets the bottom cards for the player
     public int bottomCards(ArrayList<Card> eight)
     {
@@ -379,7 +435,7 @@ public class Player
                     holder.add(counter,d);
                 }
                 h=holder;
- 
+
                 for(int i=8;i>0;i--)
                 {
                     hold=h.remove(i-1);
