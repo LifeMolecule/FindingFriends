@@ -16,6 +16,8 @@ public class Player
     private ArrayList<Card> clubs=new ArrayList<Card>();
     private ArrayList<Card> trumps=new ArrayList<Card>();
 
+    private int typeOfPlay;
+    private String suitOfPlay;
     private String canDeclare="false";
     private String trumpsuit;
     private int trumpvalue;
@@ -62,7 +64,40 @@ public class Player
         trumpsuit=suit;
         trumpvalue=value;
     }
-
+    
+    public void changeSuitToTrump()
+    {
+        int counter;
+        if(trumpsuit.equals("Spades"))
+        {
+            for(int i=spades.size();i>0;i--)
+            {
+                trumps.add(0,spades.remove(spades.size()-1));
+            }
+        }
+        else if(trumpsuit.equals("Hearts"))
+        {
+            for(int i=hearts.size();i>0;i--)
+            {
+                trumps.add(0,hearts.remove(hearts.size()-1));
+            }
+        }
+        else if(trumpsuit.equals("Diamonds"))
+        {
+            for(int i=diamonds.size();i>0;i--)
+            {
+                trumps.add(0,diamonds.remove(diamonds.size()-1));
+            }
+        }
+        else
+        {
+            for(int i=clubs.size();i>0;i--)
+            {
+                trumps.add(0,clubs.remove(clubs.size()-1));
+            }
+        }
+    }
+    
     //used to see the hand
     public String getHand()
     {
@@ -231,57 +266,182 @@ public class Player
         }
         return x;
     }
+    //method to help dealer run
+    public int gettypeOfPlay()
+    {
+        return typeOfPlay;
+    }
+    //method to help dealer run
+    public String getsuitOfPlay()
+    {
+        return suitOfPlay;
+    }
+    //method to be called in the two getCards that finds double
+    public ArrayList<Card> finddoubles(String suit)
+    {
+        //spades
+        ArrayList<Card> sdoubles=new ArrayList<Card>();
+        //clubs
+        ArrayList<Card> cdoubles=new ArrayList<Card>();
+        //hearts
+        ArrayList<Card> hdoubles=new ArrayList<Card>();
+        //diamonds
+        ArrayList<Card> ddoubles=new ArrayList<Card>();
+        //trumps
+        ArrayList<Card> tdoubles=new ArrayList<Card>();
+        //holds the next card
+        Card ch=spades.get(0);
+        int t=0;
+        //finds doubles in the spade arraylist
+        for(int i=1;i<spades.size();i++)
+        { 
+            if(spades.get(i).getRank().equals(ch.getRank()))
+            {
+                for(Card c:sdoubles)
+                {
+                    if(c.getRank().equals(spades.get(i).getRank()))
+                    {
+                        t=1;
+                    }
+                }
+                if(t==1)
+                {
+                    sdoubles.add(spades.get(i));
+                }
+            }
+            ch=spades.get(i);
+            t=0;
+        }
+        
+        ch=clubs.get(0);
+        t=0;
+        //finds doubles in the clubs arraylist
+        for(int i=1;i<clubs.size();i++)
+        { 
+            if(clubs.get(i).getRank().equals(ch.getRank()))
+            {
+                for(Card c:cdoubles)
+                {
+                    if(c.getRank().equals(clubs.get(i).getRank()))
+                    {
+                        t=1;
+                    }
+                }
+                if(t==1)
+                {
+                    cdoubles.add(clubs.get(i));
+                }
+            }
+            ch=clubs.get(i);
+            t=0;
+        }
+       
+        ch=hearts.get(0);
+        t=0;
+        //finds doubles in the hearts arraylist
+        for(int i=1;i<hearts.size();i++)
+        { 
+            if(hearts.get(i).getRank().equals(ch.getRank()))
+            {
+                for(Card c:hdoubles)
+                {
+                    if(c.getRank().equals(hearts.get(i).getRank()))
+                    {
+                        t=1;
+                    }
+                }
+                if(t==1)
+                {
+                    hdoubles.add(hearts.get(i));
+                }
+            }
+            ch=hearts.get(i);
+            t=0;
+        }
+        
+        ch=diamonds.get(0);
+        t=0;
+        //finds doubles in the diamonds arraylist
+        for(int i=1;i<diamonds.size();i++)
+        { 
+            if(diamonds.get(i).getRank().equals(ch.getRank()))
+            {
+                for(Card c:sdoubles)
+                {
+                    if(c.getRank().equals(diamonds.get(i).getRank()))
+                    {
+                        t=1;
+                    }
+                }
+                if(t==1)
+                {
+                    ddoubles.add(diamonds.get(i));
+                }
+            }
+            ch=diamonds.get(i);
+            t=0;
+        }
+        
+        
+        
+        
+        
+        
+        
+        //change this into multiple if statements based on suit that determine which array it returns.
+        return sdoubles;
+        
+    }
+    
+    
     //overloaded method for the first card played to set the type and stuff
     public ArrayList<Card> getCard()
     {
         ArrayList <Card> hold = new ArrayList<Card>();
+
         
-        
-        
-        
-        
+        //change typeOfPlay and suitOfPlay
+
         return hold;
-        
     }
     //gets cards to play based on the parameters of the first type played and the 
-    public ArrayList<Card> getCard(int type,String suit)
+    public ArrayList<Card> getCard(int play,String suit)
     {
         ArrayList <Card> hold = new ArrayList<Card>();
-        
-        
+
         if(suit.equals("Spades"))
         {
-            
+
         }
         else if(suit.equals("Diamonds"))
         {
-            
+
         }
         else if(suit.equals("Hearts"))
         {
-            
+
         }
         else if(suit.equals("Clubs"))
         {
-            
+
         }
         else if(suit.equals("Trumps"))
         {
-            
+
         }
         //singles
-        if(type==1)
+        if(play==1)
         {
 
         }
 
         //doubles
-        else if(type==2)
+        else if(play==2)
         {
         }
 
         //taking the trash
-        else if(type==3)
+        else if(play==3)
         {
         }
 

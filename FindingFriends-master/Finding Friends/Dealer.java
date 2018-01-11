@@ -87,6 +87,10 @@ public class Dealer
         two.bottomCards(holder);
         three.bottomCards(holder);
         four.bottomCards(holder);
+        one.changeSuitToTrump();
+        two.changeSuitToTrump();
+        three.changeSuitToTrump();
+        four.changeSuitToTrump();
         
     }
     
@@ -157,6 +161,8 @@ public class Dealer
         if(rpf==0)
         {
             //order should be capture 0 killing 1 capture 1 killing 0
+            capture.get(0).getCard();
+            
         }
         else if (rpf==1)
         {

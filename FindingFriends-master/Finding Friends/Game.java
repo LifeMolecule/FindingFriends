@@ -38,6 +38,12 @@ public class Game
         d.setUp(trumpsuit, trumpnumvalue);
         d.teamSet();
         
+        //get rid of this line later, its just for testing
+        System.out.println(d.getAllhands());
+        
+        
+        
+        
         
         //for loop that runs the game
         int rpf=2;
