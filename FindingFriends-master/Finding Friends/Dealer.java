@@ -33,7 +33,7 @@ public class Dealer
     public String dealRound(String x,String trump,int counter) { 
         //determines if a trump has been declared yet
         String o=one.drawCard(shoe.nextCard(),x,trump);
-           if(!o.equals("false") && counter==0)
+        if(!o.equals("false") && counter==0)
         {
             x=o;
             System.out.println("Player one declared a "+ o + " " + trump);
@@ -47,26 +47,24 @@ public class Dealer
             counter=1;
         }
         String th=three.drawCard(shoe.nextCard(),x,trump);
-          if(!th.equals("false") && counter==0)
+        if(!th.equals("false") && counter==0)
         {
             x=th;
             System.out.println("Player three declared a "+ th + " " + trump);
             counter=1;
         }
         String f=four.drawCard(shoe.nextCard(),x,trump);
-         if(!f.equals("false") && counter==0)
+        if(!f.equals("false") && counter==0)
         {
             x=f;
             System.out.println("Player four declared a "+ f + " " + trump);
             counter=1;
         }
-     
-        
+
       
-       
         return x;
     }
-    
+
     //tells dealer what the trump suit and number are
     //deals bottom 8 and has cpu automatically choose the lowest cards that arnt doubles and dumps,
     //otherwise lets player choose 8 cards to dump
@@ -91,9 +89,9 @@ public class Dealer
         two.changeSuitToTrump();
         three.changeSuitToTrump();
         four.changeSuitToTrump();
-        
+
     }
-    
+
     //Entire method will probably be deleted later, used for testing (NOT IMPORTANT) 
     public String getAllhands()
     {
@@ -136,22 +134,21 @@ public class Dealer
             capture.add(three);
             capture.add(one);
         }
-         else if (control().equals("three"))
+        else if (control().equals("three"))
         {
             killing.add(three);
             killing.add(one);
             capture.add(four);
             capture.add(two);
         }
-         else if (control().equals("four"))
+        else if (control().equals("four"))
         {
             killing.add(four);
             killing.add(two);
             capture.add(one);
             capture.add(three);
         }
-        
-        
+
     }
     //main class of the game rpf stands for redefined player number
     public int gameRound(int rpf)
@@ -162,7 +159,7 @@ public class Dealer
         {
             //order should be capture 0 killing 1 capture 1 killing 0
             capture.get(0).getCard();
-            
+
         }
         else if (rpf==1)
         {
@@ -177,11 +174,10 @@ public class Dealer
         {
             //order should be killing 1 capture 1 killing 0 capture 0
         }
-        
-        
+
         
         bottom=bottom+newrpf*1000;
         return bottom;
     }
-   
+
 }

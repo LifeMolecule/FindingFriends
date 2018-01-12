@@ -38,8 +38,6 @@ public class Game
         d.setUp(trumpsuit, trumpnumvalue);
         d.teamSet();
         
-        //get rid of this line later, its just for testing
-        System.out.println(d.getAllhands());
         
         
         
@@ -50,6 +48,11 @@ public class Game
         int output=0;
         for(int i=0;i<25;i++)
         {
+            
+            //un comment this at the end to make everything work hopefully
+            //System.out.println("----------------------------\nRound " + (i+1));
+            
+            
             //method that takes in Last rounds winner; produces an amount of points and a new winner in the format 10##. If first digit is two or three
             //then the killing team wins, otherwise the capturing team wins
             output=d.gameRound(rpf);
