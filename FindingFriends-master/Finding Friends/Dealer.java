@@ -159,20 +159,35 @@ public class Dealer
         {
             //order should be capture 0 killing 1 capture 1 killing 0
             capture.get(0).getCard();
+            killing.get(1).getCard(capture.get(0).gettypeOfPlay(),capture.get(0).getsuitOfPlay());
+            capture.get(1).getCard(capture.get(0).gettypeOfPlay(),capture.get(0).getsuitOfPlay());
+            killing.get(0).getCard(capture.get(0).gettypeOfPlay(),capture.get(0).getsuitOfPlay());
 
         }
         else if (rpf==1)
         {
             //order should be capture 1 killing 0 capture 0 killing 1 
+            capture.get(1).getCard();
+            killing.get(0).getCard(capture.get(1).gettypeOfPlay(),capture.get(1).getsuitOfPlay());
+            capture.get(0).getCard(capture.get(1).gettypeOfPlay(),capture.get(1).getsuitOfPlay());
+            killing.get(1).getCard(capture.get(1).gettypeOfPlay(),capture.get(1).getsuitOfPlay());
         }
         else if (rpf==2)
         {
-            killing.get(0); //.getCard Need to write the get card class first order should be killing 0 capture 0 
+            // Need to write the get card class first order should be killing 0 capture 0 
             // killing 1 capture 1
+            killing.get(0).getCard();
+            capture.get(0).getCard(killing.get(0).gettypeOfPlay(),killing.get(0).getsuitOfPlay());
+            killing.get(1).getCard(killing.get(0).gettypeOfPlay(),killing.get(0).getsuitOfPlay());
+            capture.get(1).getCard(killing.get(0).gettypeOfPlay(),killing.get(0).getsuitOfPlay());
         }
         else if (rpf==3)
         {
             //order should be killing 1 capture 1 killing 0 capture 0
+            killing.get(1).getCard();
+            capture.get(1).getCard(killing.get(1).gettypeOfPlay(),killing.get(1).getsuitOfPlay());
+            killing.get(0).getCard(killing.get(1).gettypeOfPlay(),killing.get(1).getsuitOfPlay());
+            capture.get(0).getCard(killing.get(1).gettypeOfPlay(),killing.get(1).getsuitOfPlay());
         }
 
         

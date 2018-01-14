@@ -1,7 +1,7 @@
 # FindingFriends
 Finding Friends card game 
 
-
+determine where to print who played what
 get order working in gameRound in dealer; Winning the round calculator(in gameRound)
 make getCard for the leading dude work
 showing the player/the cpu which cards they can play and having the cpu either choose "points, lowest, or highest" playing doubles before singles. 

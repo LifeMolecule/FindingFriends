@@ -442,9 +442,111 @@ public class Player
             System.out.println("----------------------------\n Here are all your cards:\n" + getHand());
             System.out.println("You are leading this round, what would you like to play?");
             System.out.println("1: Singles, 2: Doubles, 3: Consecutive Pairs");
-            
+            int x=scan.nextInt();
+            if(x==1)
+            {
+                Card ho;
+                int suit=0;
+                int counter=1;
+                while(counter>0)
+                {   int j=0;
+                    if(suit==0)
+                    {
+                        System.out.println("----------------------------");
+                        
+                        for(Card c:spades)
+                        {   
+                            System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
+                            j+=1;
+                        }
+                        System.out.println("\nHere are the spades, what would you like to do?\n1:play from spades  2: next suit");
+                        int num=scan.nextInt();
+                        if(num==1)
+                        {
+                            System.out.println("\nInput the number of a card you would like to play");
+                            ho=spades.remove(scan.nextInt());
+                            counter-=1;
+                        }
+                        else
+                        {
+                            suit=(suit+1) % 4;
+                        }
+                    }
+                    else if(suit==1)
+                    {
+                        System.out.println("----------------------------");
+                        
+                        for(Card c:clubs)
+                        {   
+                            System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
+                            j+=1;
+                        }
+                        System.out.println("\nHere are the clubs, what would you like to do?\n1:play from clubs  2: next suit");
+                        int num=scan.nextInt();
+                        if(num==1)
+                        {
+                            System.out.println("Input the number of a card you would like to play\n");
+                            ho=clubs.remove(scan.nextInt());
+                            counter-=1;
+                        }
+                        else
+                        {
+                            suit=(suit+1) % 4;
+                        }
+                    }
+                    else if(suit==2)
+                    {
+                        System.out.println("----------------------------");
+                        
+                        for(Card c:diamonds)
+                        {
+                            System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
+                            j+=1;
+                        }
+                        System.out.println("\nHere are the diamonds, what would you like to do?\n1:play from diamonds  2: next suit");
+                        int num=scan.nextInt();
+                        if(num==1)
+                        {
+                            System.out.println("Input the number of a card you would like to play\n");
+                            ho=diamonds.remove(scan.nextInt());
+                            counter-=1;
+                        }
+                        else
+                        {
+                            suit=(suit+1) % 4;
+                        }
+                    }
+                    else if(suit==3)
+                    {
+                        System.out.println("----------------------------");
+                        
+                        for(Card c:hearts)
+                        {  
+                            System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
+                            j+=1;
+                        }
+                        System.out.println("\nHere are the hearts, what would you like to do?\n1:play from hearts  2: next suit");
+                        int num=scan.nextInt();
+                        if(num==1)
+                        {
+                            System.out.println("Input the number of a card you would like to play\n");
+                            ho=hearts.remove(scan.nextInt());
+                            counter-=1;
+                        }
+                        else
+                        {
+                            suit=(suit+1) % 4;
+                        }
+                    }
+                }
+            }
+            else if(x==2)
             {
             }
+            else
+            {
+            }
+            
             
         }
         
@@ -541,7 +643,7 @@ public class Player
                             System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
                             j+=1;
                         }
-                        System.out.println("Here are the spades, what would you like to do?\n1:remove from spades  2: next suit");
+                        System.out.println("\nHere are the spades, what would you like to do?\n1:remove from spades  2: next suit");
                         int num=scan.nextInt();
                         if(num==1)
                         {
