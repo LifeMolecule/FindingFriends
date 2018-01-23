@@ -279,7 +279,6 @@ public class Player
     //method to be called in the two getCards that finds double
     public ArrayList<Card> finddoubles(String suit)
     {
-        //spades
         ArrayList<Card> doubles=new ArrayList<Card>();
 
         if(suit.equals("Trumps") || suit.equals(trumpsuit))
@@ -438,14 +437,15 @@ public class Player
         ArrayList <Card> hold = new ArrayList<Card>();
         if(type.equals("Human"))
         {
-            
+
             System.out.println("----------------------------\n Here are all your cards:\n" + getHand());
             System.out.println("You are leading this round, what would you like to play?");
             System.out.println("1: Singles, 2: Doubles, 3: Consecutive Pairs");
             int x=scan.nextInt();
+
             if(x==1)
             {
-                Card ho;
+                Card ho=new Card("delete",0,"delete");
                 int suit=0;
                 int counter=1;
                 while(counter>0)
@@ -453,7 +453,7 @@ public class Player
                     if(suit==0)
                     {
                         System.out.println("----------------------------");
-                        
+
                         for(Card c:spades)
                         {   
                             System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
@@ -469,13 +469,13 @@ public class Player
                         }
                         else
                         {
-                            suit=(suit+1) % 4;
+                            suit=(suit+1) % 5;
                         }
                     }
                     else if(suit==1)
                     {
                         System.out.println("----------------------------");
-                        
+
                         for(Card c:clubs)
                         {   
                             System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
@@ -491,13 +491,13 @@ public class Player
                         }
                         else
                         {
-                            suit=(suit+1) % 4;
+                            suit=(suit+1) % 5;
                         }
                     }
                     else if(suit==2)
                     {
                         System.out.println("----------------------------");
-                        
+
                         for(Card c:diamonds)
                         {
                             System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
@@ -513,13 +513,13 @@ public class Player
                         }
                         else
                         {
-                            suit=(suit+1) % 4;
+                            suit=(suit+1) % 5;
                         }
                     }
                     else if(suit==3)
                     {
                         System.out.println("----------------------------");
-                        
+
                         for(Card c:hearts)
                         {  
                             System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
@@ -535,30 +535,205 @@ public class Player
                         }
                         else
                         {
-                            suit=(suit+1) % 4;
+                            suit=(suit+1) % 5;
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("----------------------------");
+
+                        for(Card c:trumps)
+                        {  
+                            System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
+                            j+=1;
+                        }
+                        System.out.println("\nHere are the trumps, what would you like to do?\n1:play from trumps  2: next suit");
+                        int num=scan.nextInt();
+                        if(num==1)
+                        {
+                            System.out.println("Input the number of a card you would like to play\n");
+                            ho=trumps.remove(scan.nextInt());
+                            counter-=1;
+                        }
+                        else
+                        {
+                            suit=(suit+1) % 5;
+                        }
+                    }
+
+                }
+                hold.add(ho);
+            }
+            else if(x==2)
+            { ArrayList<Card> hol=new ArrayList<Card>();
+
+                int suit=0;
+                int counter=1;
+                while(counter>0)
+                {   int j=0;
+
+                    if(suit==0)
+                    {
+                        System.out.println("----------------------------");
+                        hol=finddoubles("Spades");
+                        for(Card c:hol)
+                        {   
+                            System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
+                            j+=1;
+                        }
+                        System.out.println("\nHere are the spade pairs, what would you like to do?\n1:play from spades  2: next suit");
+                        int num=scan.nextInt();
+                        if(num==1)
+                        {
+                            System.out.println("\nInput the number of the pair you would like to play");
+                            int a=scan.nextInt();
+                            for(int i =spades.size(); i>0;i--)
+                            {
+                                if(spades.get(i-1).getRank().equals(hol.get(a).getRank()))
+                                {
+                                    hol.add(spades.remove(i-1));
+                                }
+                            }
+                            counter-=1;
+                        }
+                        else
+                        {
+                            suit=(suit+1) % 5;
+                        }
+                    }
+                    else if(suit==1)
+                    {
+                        System.out.println("----------------------------");
+                        hol=finddoubles("Clubs");
+                        for(Card c:hol)
+                        {   
+                            System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
+                            j+=1;
+                        }
+                        System.out.println("\nHere are the club pairs, what would you like to do?\n1:play from clubs 2: next suit");
+                        int num=scan.nextInt();
+                        if(num==1)
+                        {
+                            System.out.println("\nInput the number of the pair you would like to play");
+                            int a=scan.nextInt();
+                            for(int i =clubs.size(); i>0;i--)
+                            {
+                                if(clubs.get(i-1).getRank().equals(hol.get(a).getRank()))
+                                {
+                                    hol.add(clubs.remove(i-1));
+                                }
+                            }
+                            counter-=1;
+                        }
+                        else
+                        {
+                            suit=(suit+1) % 5;
+                        }
+                    }
+                    else if(suit==2)
+                    {
+                        System.out.println("----------------------------");
+                        hol=finddoubles("Hearts");
+                        for(Card c:hol)
+                        {   
+                            System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
+                            j+=1;
+                        }
+                        System.out.println("\nHere are the heart pairs, what would you like to do?\n1:play from hearts 2: next suit");
+                        int num=scan.nextInt();
+                        if(num==1)
+                        {
+                            System.out.println("\nInput the number of the pair you would like to play");
+                            int a=scan.nextInt();
+                            for(int i =hearts.size(); i>0;i--)
+                            {
+                                if(hearts.get(i-1).getRank().equals(hol.get(a).getRank()))
+                                {
+                                    hol.add(hearts.remove(i-1));
+                                }
+                            }
+                            counter-=1;
+                        }
+                        else
+                        {
+                            suit=(suit+1) % 5;
+                        }
+                    }
+                    else if(suit==3)
+                    {
+                        System.out.println("----------------------------");
+                        hol=finddoubles("Diamonds");
+                        for(Card c:hol)
+                        {   
+                            System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
+                            j+=1;
+                        }
+                        System.out.println("\nHere are the diamond pairs, what would you like to do?\n1:play from diamonds 2: next suit");
+                        int num=scan.nextInt();
+                        if(num==1)
+                        {
+                            System.out.println("\nInput the number of the pair you would like to play");
+                            int a=scan.nextInt();
+                            for(int i =diamonds.size(); i>0;i--)
+                            {
+                            if(diamonds.get(i-1).getRank().equals(hol.get(a).getRank()))
+                            {
+                                hol.add(diamonds.remove(i-1));
+                            }
+                        }
+                            counter-=1;
+                        }
+                        else
+                        {
+                            suit=(suit+1) % 5;
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("----------------------------");
+                        hol=finddoubles("Trumps");
+                        for(Card c:hol)
+                        {   
+                            System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
+                            j+=1;
+                        }
+                        System.out.println("\nHere are the trump pairs, what would you like to do?\n1:play from trumps 2: next suit");
+                        int num=scan.nextInt();
+                        if(num==1)
+                        {
+                            System.out.println("\nInput the number of the pair you would like to play");
+                            int a=scan.nextInt();
+                            for(int i =trumps.size(); i>0;i--)
+                            {
+                            if(trumps.get(i-1).getRank().equals(hol.get(a).getRank()) && trumps.get(i-1).getSuit().equals(hol.get(a).getSuit()))
+                            {
+                                hol.add(trumps.remove(i-1));
+                            }
+                        }
+                            counter-=1;
+                        }
+                        else
+                        {
+                            suit=(suit+1) % 5;
                         }
                     }
                 }
+                hold=hol;
             }
-            else if(x==2)
-            {
-            }
+            //consecutive pairs for player here (Probs finish this later)
             else
             {
+                
             }
-            
-            
+
         }
-        
         //insert cpu logic below
         else
         {
             
             
-            
         }
-        
-        
+
         
         //change typeOfPlay and suitOfPlay
         return hold;
@@ -637,7 +812,7 @@ public class Player
                     if(suit==0)
                     {
                         System.out.println("----------------------------");
-                        
+
                         for(Card c:spades)
                         {   
                             System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
@@ -661,7 +836,7 @@ public class Player
                     else if(suit==1)
                     {
                         System.out.println("----------------------------");
-                        
+
                         for(Card c:clubs)
                         {   
                             System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
@@ -685,7 +860,7 @@ public class Player
                     else if(suit==2)
                     {
                         System.out.println("----------------------------");
-                        
+
                         for(Card c:diamonds)
                         {
                             System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
@@ -709,7 +884,7 @@ public class Player
                     else if(suit==3)
                     {
                         System.out.println("----------------------------");
-                        
+
                         for(Card c:hearts)
                         {  
                             System.out.print(j + ": "+ c.getSuit()+"/"+ c.getRank() + " ");
@@ -735,7 +910,7 @@ public class Player
                 return bottompilepoints;
             }
 
-            //make the cpu logic here smarter to not throw away pairs or points sometime later
+            //make the cpu logic here smarter to not throw away pairs or points sometime later rn just throws away the lowest cards
             else
             {
                 set(trumpsuit,trumpvalue);

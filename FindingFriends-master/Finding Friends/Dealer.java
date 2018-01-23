@@ -155,6 +155,8 @@ public class Dealer
     {
         int bottom=0;
         int newrpf=0;
+        //need to do something about all of the arraylists and stuff. 
+        //maybe have the calculator use the size of the arraylist to determine how it will find out who won the round or smth
         if(rpf==0)
         {
             //order should be capture 0 killing 1 capture 1 killing 0

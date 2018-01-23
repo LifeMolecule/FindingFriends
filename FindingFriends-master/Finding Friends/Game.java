@@ -49,8 +49,7 @@ public class Game
         for(int i=0;i<25;i++)
         {
             
-            //un comment this at the end to make everything work hopefully
-            //System.out.println("----------------------------\nRound " + (i+1));
+            System.out.println("----------------------------\nRound " + (i+1));
             
             
             //method that takes in Last rounds winner; produces an amount of points and a new winner in the format 10##. If first digit is two or three
