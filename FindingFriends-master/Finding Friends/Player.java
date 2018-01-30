@@ -738,6 +738,35 @@ public class Player
         //change typeOfPlay and suitOfPlay
         return hold;
     }
+    
+    
+
+    public Card Searcher(int value, String typeOfSearch, ArrayList<Card> a)
+    {
+        int counter=0;
+        if(typeOfSearch.equals("Greater"))
+        {
+            for(int i=a.size();i>0;i--)
+            {
+                if(a.get(i-1).getValue()>value)
+                {
+                    return a.remove(i-1);
+                }
+            }
+        }
+        else if(typeOfSearch.equals("Lesser"))
+        {
+            //array must start from the beginning, return none if nothing is returned.
+        }
+        else
+        {
+        }
+        
+        //return a blank card if nothing happens "null?" something or another
+        return Card c();
+    }
+    
+    
     //gets cards to play based on the parameters of the first type played and the 
     public ArrayList<Card> getCard(int play,String suit)
     {
